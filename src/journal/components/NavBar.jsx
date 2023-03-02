@@ -1,14 +1,16 @@
 import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { startLogout } from '../../store/auth';
 
-export const NavBar = ({ drawerWidth }) => {
+export const NavBar = ({ drawerWidth, handleDrawerOpen }) => {
   const dispatch = useDispatch();
 
   const onLogout = () => {
     dispatch(startLogout());
   };
+
   return (
     <AppBar
       position="fixed"
@@ -22,6 +24,7 @@ export const NavBar = ({ drawerWidth }) => {
           color="inherit"
           edge="start"
           sx={{ mr: 2, display: { sm: 'none' } }}
+          onClick={handleDrawerOpen}
         >
           <MenuOutlined />
         </IconButton>
