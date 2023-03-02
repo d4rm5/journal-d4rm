@@ -4,7 +4,7 @@ Repositorio de journal-app del curso de React dictado por Fernando Herrera.
 
 ## Stack
 
-Este proyecto está construido con React, Material UI y Firbase.
+Este proyecto está construido con React, Material UI y Firebase.
 
 ## Mis mejoras
 
