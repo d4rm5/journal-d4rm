@@ -81,19 +81,11 @@ export const NoteView = () => {
           ref={fileInputRef}
         />
 
-        <IconButton
-          color="primary"
-          disabled={isSaving}
-          onClick={() => fileInputRef.current.click()}
-        >
-          <UploadOutlined />
-        </IconButton>
-
         <Button
           disabled={isSaving}
           onClick={onSaveNote}
           color="primary"
-          sx={{ padding: 2 }}
+          sx={{ padding: 2, display: { xs: 'none', sm: 'flex' } }}
         >
           <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
           Guardar
@@ -124,7 +116,16 @@ export const NoteView = () => {
         />
       </Grid>
 
-      <Grid container justifyContent="end">
+      <Grid container justifyContent="space-between">
+        <Button
+          color="primary"
+          disabled={isSaving}
+          onClick={() => fileInputRef.current.click()}
+          sx={{ mt: 2 }}
+        >
+          <UploadOutlined />
+          Subir imagen
+        </Button>
         <Button onClick={onDelete} sx={{ mt: 2 }} color="error">
           <DeleteOutlined />
           Borrar

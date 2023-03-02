@@ -1,6 +1,7 @@
-import { ArrowBack } from '@mui/icons-material';
+import { AddOutlined, ArrowBack } from '@mui/icons-material';
 import {
   Box,
+  Button,
   Divider,
   Drawer,
   IconButton,
@@ -8,13 +9,17 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { startNewNote } from '../../store/journal';
 import { SideBarItem } from './';
 
 export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
   const { displayName } = useSelector((state) => state.auth);
   const { notes } = useSelector((state) => state.journal);
-
+  const dispatch = useDispatch();
+  const onClickNewNote = () => {
+    dispatch(startNewNote());
+  };
   return (
     <Box
       component="nav"
@@ -50,6 +55,20 @@ export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
             <SideBarItem key={note.id} {...note} />
           ))}
         </List>
+        <Button
+          onClick={onClickNewNote && handleDrawerClose}
+          color="primary"
+          sx={{
+            padding: 2,
+            display: { xs: 'flex', sm: 'none' },
+            position: 'fixed',
+            bottom: 10,
+            left: 20,
+          }}
+        >
+          <AddOutlined sx={{ fontSize: 30, mr: 1 }} />
+          Crear nota
+        </Button>
       </Drawer>
 
       <Drawer
