@@ -19,6 +19,7 @@ export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
   const dispatch = useDispatch();
   const onClickNewNote = () => {
     dispatch(startNewNote());
+    handleDrawerClose();
   };
   return (
     <Box
@@ -56,7 +57,7 @@ export const SideBar = ({ drawerWidth = 240, open, handleDrawerClose }) => {
           ))}
         </List>
         <Button
-          onClick={onClickNewNote && handleDrawerClose}
+          onClick={onClickNewNote}
           color="primary"
           sx={{
             padding: 2,
